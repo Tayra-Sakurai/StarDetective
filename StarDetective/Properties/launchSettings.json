@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "StarDetective (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "StarDetective (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
