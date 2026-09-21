@@ -1,0 +1,14 @@
+// SPDX-FileCopyrightText: 2026 Tayra Sakurai <b4151069@edu.kit.ac.jp>
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace YouAndIdol
+{
+    public static class Constants
+    {
+        public const int DIMENSION = 768;
+    }
+}

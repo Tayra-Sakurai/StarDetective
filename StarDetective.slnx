@@ -13,4 +13,5 @@
     <Platform Solution="*|x86" Project="x86" />
     <Deploy />
   </Project>
+  <Project Path="YouAndIdol/YouAndIdol.csproj" Id="d84fbd7d-e7be-4d63-a149-50d311dab559" />
 </Solution>
