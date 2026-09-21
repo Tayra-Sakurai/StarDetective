@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ExpandingSky (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "ExpandingSky (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

@@ -7,11 +7,18 @@
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
   </Folder>
+  <Project Path="ExpandingSky/ExpandingSky.csproj" Id="f9badb0c-c3d1-4b45-96db-a4609643d827">
+    <Platform Solution="*|ARM64" Project="ARM64" />
+    <Platform Solution="*|x64" Project="x64" />
+    <Platform Solution="*|x86" Project="x86" />
+    <Deploy />
+  </Project>
   <Project Path="StarDetective/StarDetective.csproj">
     <Platform Solution="*|ARM64" Project="ARM64" />
     <Platform Solution="*|x64" Project="x64" />
     <Platform Solution="*|x86" Project="x86" />
     <Deploy />
   </Project>
+  <Project Path="Wonderful/Wonderful.csproj" Id="b2c6d055-4421-4676-b3dd-eb69747bcf12" />
   <Project Path="YouAndIdol/YouAndIdol.csproj" Id="d84fbd7d-e7be-4d63-a149-50d311dab559" />
 </Solution>

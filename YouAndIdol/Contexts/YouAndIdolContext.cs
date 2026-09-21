@@ -74,7 +74,10 @@ namespace YouAndIdol.Contexts
                             "((([FromPaymentMethodId] IS NOT NULL) + ([FromAccountId] IS NOT NULL) = 1) AND (([ToPaymentMethodId] IS NOT NULL) + ([ToAccountId] IS NOT NULL) = 1)) OR (([FromPaymentMethodId] IS NOT NULL) + ([FromAccountId] IS NOT NULL) + ([ToPaymentMethodId] IS NOT NULL) + ([ToAccountId] IS NOT NULL) = 0)"));
                 });
 
-            modelBuilder.Entity<Category>();
+            modelBuilder.Entity<Category>()
+                .HasOne(e => e.Parent)
+                .WithMany(e => e.Children)
+                .OnDelete(DeleteBehavior.SetNull);
             modelBuilder.Entity<Account>();
             modelBuilder.Entity<PaymentMethod>();
         }

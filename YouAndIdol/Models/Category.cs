@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace YouAndIdol.Models
@@ -15,6 +16,7 @@ namespace YouAndIdol.Models
         public double Bugdet { get; set; } = double.NaN;
         public int? ParentId { get; set; } = null;
         public Category? Parent { get; set; }
+        public ObservableCollection<Category> Children { get; } = [];
         public ICollection<Item> Items { get; } = new HashSet<Item>();
     }
 }
