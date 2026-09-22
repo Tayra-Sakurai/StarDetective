@@ -18,7 +18,7 @@ using YouAndIdol.Models;
 
 namespace YouAndIdol.ViewModels
 {
-    public partial class CategoriesViewModel : ObservableRecipient
+    public partial class CategoriesViewModel : ObservableRecipient, IRecipient<CategoryRemovedMessage>, IRecipient<CategoryUpdatedMessage>
     {
         private IDbContextFactory<YouAndIdolContext> dbContextFactory;
 
@@ -27,6 +27,17 @@ namespace YouAndIdol.ViewModels
         {
             this.dbContextFactory = dbContextFactory;
             Categories = [];
+        }
+
+        protected override void OnActivated()
+        {
+            Messenger.Register<CategoryRemovedMessage>(this);
+            Messenger.Register<CategoryUpdatedMessage>(this);
+        }
+
+        protected override void OnDeactivated()
+        {
+            Messenger.UnregisterAll(this);
         }
 
         [ObservableProperty]
@@ -82,6 +93,30 @@ namespace YouAndIdol.ViewModels
             context.Add(newCategory);
 
             WeakReferenceMessenger.Default.Send(new CategoryAddedMessage(newCategory));
+        }
+
+        [RelayCommand(CanExecute = nameof(CanInvoke))]
+        private static void Detail(Category? category)
+        {
+            if (category == null)
+                return;
+
+            WeakReferenceMessenger.Default.Send(new CategoryInvokedMessage(category));
+        }
+
+        private static bool CanInvoke(Category? category)
+        {
+            return category != null;
+        }
+
+        public async void Receive(CategoryRemovedMessage message)
+        {
+            await LoadAsync();
+        }
+
+        public async void Receive(CategoryUpdatedMessage message)
+        {
+            await LoadAsync();
         }
     }
 }

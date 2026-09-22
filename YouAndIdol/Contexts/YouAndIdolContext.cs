@@ -17,6 +17,7 @@ namespace YouAndIdol.Contexts
         public DbSet<Income> Incomes { get; set; }
         public DbSet<Transfer> Transfer { get; set; }
         public DbSet<PaymentMethod> PaymentMethods { get; set; }
+        public DbSet<DatabaseUser> DatabaseUsers { get; set; }
 
         public YouAndIdolContext(DbContextOptions<YouAndIdolContext> options)
             : base(options)
@@ -80,6 +81,11 @@ namespace YouAndIdol.Contexts
                 .OnDelete(DeleteBehavior.SetNull);
             modelBuilder.Entity<Account>();
             modelBuilder.Entity<PaymentMethod>();
+            modelBuilder.Entity<DatabaseUser>()
+                .Property(e => e.UserIdentity)
+                .HasConversion(
+                    c => c.ToByteArray(),
+                    v => new(v));
         }
     }
 }
